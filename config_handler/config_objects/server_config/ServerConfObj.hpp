@@ -1,0 +1,4 @@
+#ifndef SERVER_OBJECT_HPP
+#define SERVER_OBJECT_HPP
+
+#endif // SERVER_OBJECT_HPP
