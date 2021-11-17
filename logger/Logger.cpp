@@ -2,6 +2,7 @@
 
 Log::Logger::Logger(const std::string& logFilePath)
 	: logFilePath_(logFilePath),
+	  typeLog_(Log::DEBUG),
 	  isLoggingToFileOn_(false),
 	  isConsoleOutputOn_(true)
 { }
@@ -9,24 +10,24 @@ Log::Logger::Logger(const std::string& logFilePath)
 Log::Logger::~Logger()
 { }
 
-Log::Logger&		Log::Logger::log(Log::TypeLog typeLog)
+Log::Logger& Log::Logger::log(Log::TypeLog typeLog)
 {
 	typeLog_ = typeLog;
 	selectLogColor();
 	return (*this << getTypeLogStr());
 }
 
-void		Log::Logger::consoleOutputEnable()
+void Log::Logger::consoleOutputEnable()
 {
 	isConsoleOutputOn_ = true;
 }
 
-void		Log::Logger::consoleOutputDisable()
+void Log::Logger::consoleOutputDisable()
 {
 	isConsoleOutputOn_ = false;
 }
 
-void		Log::Logger::changeLogFilePath(const std::string& logFilePath)
+void Log::Logger::changeLogFilePath(const std::string& logFilePath)
 {
 	logFilePath_ = logFilePath;
 
@@ -37,7 +38,7 @@ void		Log::Logger::changeLogFilePath(const std::string& logFilePath)
 	}
 }
 
-void		Log::Logger::logFileEnable()
+void Log::Logger::logFileEnable()
 {
 	if (isLoggingToFileOn_ == false)
 	{
@@ -48,7 +49,7 @@ void		Log::Logger::logFileEnable()
 	}
 }
 
-void		Log::Logger::logFileDisable()
+void Log::Logger::logFileDisable()
 {
 	if (isLoggingToFileOn_ == true)
 	{
@@ -58,11 +59,9 @@ void		Log::Logger::logFileDisable()
 	}
 }
 
-const std::string		Log::Logger::getTypeLogStr() const
+const std::string Log::Logger::getTypeLogStr() const
 {
 	std::string typeLogStr;
-
-	int t = DEBUG;
 
 	switch (typeLog_)
 	{
@@ -85,7 +84,7 @@ const std::string		Log::Logger::getTypeLogStr() const
 	return (typeLogStr);
 }
 
-void		Log::Logger::selectLogColor()
+void Log::Logger::selectLogColor()
 {
 	switch (typeLog_)
 	{
