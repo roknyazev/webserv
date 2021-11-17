@@ -47,17 +47,17 @@ namespace Log
 			{
 				public:
 					LogFileNotOpenException(const std::string& logFilePath)
-						: msg(logFilePath + ": not open")
+						: msg_(logFilePath + ": not open")
 					{ }
 					~LogFileNotOpenException() throw() {};
 
 					const char* what() const throw()
 					{
-						return (msg.c_str());
+						return (msg_.c_str());
 					}
 
 				private:
-					const std::string msg;
+					const std::string msg_;
 			};
 
 			/**
@@ -69,7 +69,7 @@ namespace Log
 			 * @return Logger&
 			 */
 			template <typename T>
-			Logger&		operator<<(const T& message)
+			Logger& operator<<(const T& message)
 			{
 				if (isConsoleOutputOn_ == true)
 					std::cout << logColor_ << message << DEFAULT_COLOR;
@@ -84,42 +84,42 @@ namespace Log
 			 * @param type Тип лога (TypeLog: DEBUG, INFO, WARNING, ERROR)
 			 * @return Logger& 
 			 */
-			Logger&		log(TypeLog typeLog);
+			Logger& log(TypeLog typeLog);
 
 			/**
 			 * @brief Включает вывод логов в консоль
 			 * 
 			 */
-			void		consoleOutputEnable();
+			void consoleOutputEnable();
 
 			/**
 			 * @brief Отключает вывод логов в консоль
 			 * 
 			 */
-			void		consoleOutputDisable();
+			void consoleOutputDisable();
 
 			/**
 			 * @brief Обновляет путь до файла с логами
 			 * 
 			 * @param logFilePath Путь до файла с логами
 			 */
-			void		changeLogFilePath(const std::string& logFilePath);
+			void changeLogFilePath(const std::string& logFilePath);
 
 			/**
 			 * @brief Включение записи логов в файл. По дефолту запись отключена
 			 * 
 			 */
-			void		logFileEnable();
+			void logFileEnable();
 
 			/**
 			 * @brief Отключает запись логов в файл
 			 * 
 			 */
-			void		logFileDisable();
+			void logFileDisable();
 
 		private:
-			const std::string		getTypeLogStr() const;
-			void		selectLogColor();
+			const std::string getTypeLogStr() const;
+			void selectLogColor();
 
 			std::string logFilePath_;
 			std::ofstream fileStream_;
