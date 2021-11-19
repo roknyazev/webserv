@@ -29,6 +29,6 @@ set(LOGGER_CPP_FILES
 add_library(config_lib STATIC ${CONFIG_CPP_FILES})
 add_library(logger_lib STATIC ${LOGGER_CPP_FILES})
 
-add_executable(bin_config main_test.cpp)
+add_executable(main_test main_test.cpp)
 
-target_link_libraries(bin_config config_lib logger_lib)
+target_link_libraries(main_test config_lib logger_lib)

@@ -6,22 +6,20 @@
 #include <set>
 #include <map>
 #include "dataTypes.hpp"
-#include "IObjectData.hpp"
 
-class ConfObjectData : public virtual IObjectData
+class ConfObjectData
 {
 	public:
+		ConfObjectData();
 		virtual ~ConfObjectData();
 
 	protected:
-		ConfObjectData();
-
-		void parseAutoindex(); // override
-		void parseRoot(); // override
-		void parseIndex(); // override
-		void parseAccessMethods(); // override
-		void parseErrorPages(); // override
-		void parseClienBodyBufferSize(); // override
+		void parseAutoindex();
+		void parseRoot();
+		void parseIndex();
+		void parseAccessMethods();
+		void parseErrorPages();
+		void parseClienBodyBufferSize();
 
 		bool autoindex_;
 		std::string root_;

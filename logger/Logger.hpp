@@ -6,10 +6,10 @@
 #include <exception>
 
 #define DEFAULT_COLOR "\033[37;0m"
-#define GREEN "\033[32;1m"
-#define YELLOW "\033[33;1m"
-#define RED "\033[31;1m"
-#define WHITE "\033[37;1m"
+#define GREEN "\033[32;22m"
+#define YELLOW "\033[33;22m"
+#define RED "\033[31;22m"
+#define WHITE "\033[37;22m"
 
 /**
  *		Пример использования логгера:
@@ -53,7 +53,7 @@ namespace Log
 
 					const char* what() const throw()
 					{
-						return (msg_.c_str());
+						return msg_.c_str();
 					}
 
 				private:
@@ -72,10 +72,10 @@ namespace Log
 			Logger& operator<<(const T& message)
 			{
 				if (isConsoleOutputOn_ == true)
-					std::cout << logColor_ << message << DEFAULT_COLOR;
+					std::cout << message;
 				if (isLoggingToFileOn_ == true)
 					fileStream_ << message;
-				return (*this);
+				return *this;
 			}
 
 			/**

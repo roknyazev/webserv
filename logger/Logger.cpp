@@ -14,7 +14,7 @@ Log::Logger& Log::Logger::log(Log::TypeLog typeLog)
 {
 	typeLog_ = typeLog;
 	selectLogColor();
-	return (*this << getTypeLogStr());
+	return *this << logColor_ << getTypeLogStr() << DEFAULT_COLOR;
 }
 
 void Log::Logger::consoleOutputEnable()
@@ -81,7 +81,7 @@ const std::string Log::Logger::getTypeLogStr() const
 			typeLogStr = "[ERROR] ";
 			break;
 	}
-	return (typeLogStr);
+	return typeLogStr;
 }
 
 void Log::Logger::selectLogColor()

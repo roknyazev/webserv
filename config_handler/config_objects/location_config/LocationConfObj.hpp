@@ -3,9 +3,10 @@
 
 #include "AConfigObject.hpp"
 #include "ConfObjectData.hpp"
-#include "ILocationData.hpp"
 
-class LocationConfObj : public AConfigObject, ILocationData, ConfObjectData
+class AConfigObject;
+
+class LocationConfObj : public AConfigObject, ConfObjectData
 {
 	public:
 		LocationConfObj();
@@ -20,15 +21,17 @@ class LocationConfObj : public AConfigObject, ILocationData, ConfObjectData
 		void initParseFuncs(); // override
 		void initParseVariables(); // override
 
-		void parseAlias(); // override
-		void parseCGIPass(); // override
+		void parseAlias();
+		void parseCGIPass();
+		// void addLocation(); // override
 
 		typedef void (LocationConfObj::*parseArg)(void);
 
 		std::map<std::string, parseArg> parseFuncs_;
+		std::string locationPath_;
 		std::string alias_;
 		std::string CGIPass_;
-		std::vector<LocationConfObj> locations_;
+		// std::vector<LocationConfObj> locations_;
 };
 
 #endif // LOCATION_OBJECT_HPP

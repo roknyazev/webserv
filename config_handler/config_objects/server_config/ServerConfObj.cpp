@@ -2,7 +2,8 @@
 
 ServerConfObj::ServerConfObj()
 {
-
+	initParseFuncs();
+	initParseVariables();
 }
 
 ServerConfObj::ServerConfObj(const ServerConfObj& other)

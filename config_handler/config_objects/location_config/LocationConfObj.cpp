@@ -2,7 +2,8 @@
 
 LocationConfObj::LocationConfObj()
 {
-	
+	initParseFuncs();
+	initParseVariables();
 }
 
 LocationConfObj::LocationConfObj(const LocationConfObj& other)
